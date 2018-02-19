@@ -15,6 +15,13 @@ import java.util.ArrayList;
  * @author rodman
  */
 public class Compito16022018 {
+    
+    /**
+     * Scandisco il file contentente gli hashtag e li carico 
+     * in memoria con i loro attributi
+     * @param args
+     * @throws IOException 
+     */
     public static void main(String args[]) throws IOException{
         
         ArrayList<Hashtag> words = new ArrayList<>();

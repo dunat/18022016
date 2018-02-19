@@ -5,7 +5,7 @@
  */
 
 /**
- *
+ * Classe che implementa le frequenze
  * @author rodman
  */
 public class Frequenze {
@@ -19,14 +19,26 @@ public class Frequenze {
         
     }
     
+    /**
+     * 
+     * @return frequenza
+     */
     int get_freq(){
         return this.freq;
     }
     
+    /**
+     * 
+     * @return time_point
+     */
     int get_time_point(){
         return this.time_point;
     }
     
+    /**
+     * 
+     * @return stampa frequenza e time_point
+     */
     @Override
     public String toString(){
         String s = "f:"+this.freq +", t:"+ this.time_point;

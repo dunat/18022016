@@ -24,6 +24,12 @@ public class Hashtag {
     private final List<Pvalue> point;
     private int data_creazione;
     
+    /**
+     * Costruttore di hashtag
+     * @param w Hashtag da caricare
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public Hashtag(String w) throws FileNotFoundException, IOException{
         
         //aggiungo le frequenze
@@ -36,13 +42,16 @@ public class Hashtag {
         line = br.readLine();
         String time[] = line.split(",");
         
+        //leggo le restanti righe
         line = br.readLine();
         while(line!=null) {
             
             String[] word = line.split(",");
+            //controllo se la stringa che leggo e' l'hashtag che sto creando
             if(word[1].equals(w)){
                 this.tag = word[1];
                 for(int i = 2; i < word.length; i++){
+                    //salvo le frequenze relative all'hashtag
                     Frequenze ff = new Frequenze(Integer.parseInt(word[i]),Integer.parseInt(time[i])); 
                     this.frequenze.add(ff);
                 }
@@ -65,6 +74,7 @@ public class Hashtag {
             String[] word = line.split(",");
             if(word[1].equals(w)){
                 for(int i = 2; i < word.length; i++){
+                    //salvo i p_value cumulativi
                     Pvalue pp = new Pvalue(Double.parseDouble(word[i]),Integer.parseInt(time[i]));
                     this.cum.add(pp);
                 }
@@ -85,6 +95,7 @@ public class Hashtag {
             String[] word = line.split(",");
             if(word[1].equals(w)){
                 for(int i = 2; i < word.length; i++){
+                    //salvo i p_value pointwise
                     Pvalue pp = new Pvalue(Double.parseDouble(word[i]),Integer.parseInt(time[i]));
                     this.point.add(pp);
                 }
@@ -93,6 +104,7 @@ public class Hashtag {
         }
         br.close();
         
+        //mi segno la data di creazione dell'hashtag
         int in = 0;
         this.data_creazione = Integer.parseInt(time[2]);
         while(in < this.frequenze.size() && this.frequenze.get(in).get_freq()==0){           
@@ -101,6 +113,11 @@ public class Hashtag {
         }
     }
     
+    /**
+     * recupero i p_value cumulativi piu' piccoli
+     * @param s soglia minima
+     * @return lista dei p_value minori di una certa soglia
+     */
     List<Pvalue> get_pValueMin_cum (double s){
         ArrayList<Pvalue> l = new ArrayList<>();
         
@@ -113,6 +130,11 @@ public class Hashtag {
         return l;
     }
     
+    /**
+     * recupero i p_value pointwise piu' piccoli
+     * @param s soglia minima
+     * @return lista dei p_value minori di una certa soglia
+     */
     List<Pvalue> get_pValueMin_point (double s){
         ArrayList<Pvalue> l = new ArrayList<>();
         
@@ -125,6 +147,10 @@ public class Hashtag {
         return l;
     }
     
+    /**
+     *  metodo toString
+     * @return stampa a video dell'hashtag e dei suoi attributi
+     */
     @Override
     public String toString(){
         String s = this.tag +" Data Creazione: "+this.data_creazione+ "\nFreq: "+this.frequenze + "\nCum: "+this.cum + "\nPoint: "+this.point+"\n";
