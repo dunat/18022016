@@ -122,7 +122,7 @@ public class Hashtag {
         ArrayList<Pvalue> l = new ArrayList<>();
         
         for(int i = 0; i < this.cum.size(); i++){
-            if(this.cum.get(i).get_value() < s){
+            if(this.cum.get(i).get_value() <= s){
                 l.add(this.cum.get(i));
             }
         }
@@ -139,12 +139,20 @@ public class Hashtag {
         ArrayList<Pvalue> l = new ArrayList<>();
         
         for(int i = 0; i < this.point.size(); i++){
-            if(this.point.get(i).get_value() < s){
+            if(this.point.get(i).get_value() <= s){
                 l.add(this.point.get(i));
             }
         }
         
         return l;
+    }
+    
+    /**
+     * 
+     * @return tag
+     */
+    String getTag(){
+        return this.tag;
     }
     
     /**
