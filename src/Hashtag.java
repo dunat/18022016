@@ -123,7 +123,9 @@ public class Hashtag {
         
         for(int i = 0; i < this.cum.size(); i++){
             if(this.cum.get(i).get_value() <= s){
-                l.add(this.cum.get(i));
+                if(this.data_creazione < this.cum.get(i).get_time_point()){
+                    l.add(this.cum.get(i));
+                }
             }
         }
         
@@ -140,7 +142,10 @@ public class Hashtag {
         
         for(int i = 0; i < this.point.size(); i++){
             if(this.point.get(i).get_value() <= s){
+                if(this.data_creazione < this.point.get(i).get_time_point()){
+                
                 l.add(this.point.get(i));
+                }
             }
         }
         
