@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author rodman
  */
-public class Compito16022018 {
+public class ReportPvalue {
     
     /**
      * Scandisco il file contentente gli hashtag e li carico 
